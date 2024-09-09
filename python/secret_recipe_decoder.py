@@ -52,20 +52,28 @@ class Ingredient():
 
 
 def decode_string(str):
-    """Given a string named str, use the Caesar encoding above to return the decoded string."""
-    # TODO: implement me
-    return '1 cup'
+	Return_String = ""
+
+	for Tmp_char in str:
+		if Tmp_char in ENCODING:			
+			Return_String = Return_String + ENCODING.values()
+
+	return Return_String
+
 
 
 def decode_ingredient(line):
-    """Given an ingredient, decode the amount and description, and return a new Ingredient"""
-    # TODO: implement me
-    return Ingredient("1 cup", "butter")
+
+	decoded_line=()
+     	split_line=line.split('#')
+     	for word in split_line:
+        	decoded_line = decoded_line + ( decode_string(word),)
+
+	return decoded_line
+
 
 
 def main():
-    """A program that decodes a secret recipe"""
-    # TODO: implement me
-
-if __name__ == "__main__":
-    main()
+    with open('secret_recipe.txt', 'r') as Encoded_Recipe:
+        for line in Encoded_Recipe:
+		decode_ingredient (line)
